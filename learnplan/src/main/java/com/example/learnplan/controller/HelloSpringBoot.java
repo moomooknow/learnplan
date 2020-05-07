@@ -23,6 +23,7 @@ public class HelloSpringBoot {
                 " " + 
                 environment.getProperty("com.application.name") + 
                 learnPlanConfig.getName() + 
-                learnPlanConfig.getDescribe();
+                learnPlanConfig.getDescribe() +
+                "yes";
     }
 }
