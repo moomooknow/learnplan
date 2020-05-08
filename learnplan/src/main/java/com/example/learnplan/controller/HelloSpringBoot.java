@@ -26,7 +26,8 @@ public class HelloSpringBoot {
                 " " + 
                 environment.getProperty("com.application.name") + 
                 " " +
-                learnPlanConfig.getDescribe();
+                learnPlanConfig.getDescribe() + 
+                " https://blog.csdn.net/xcbeyond/category_9277298.html";
     }
     
     @RequestMapping("/result")
