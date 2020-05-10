@@ -17,7 +17,6 @@ import java.util.UUID;
 /**
  * @author Administrator
  */
-@CacheConfig(cacheNames = "user")
 @RestController
 public class UserController {
     @Autowired
@@ -29,7 +28,7 @@ public class UserController {
         Date date = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);
         String formattedDate = dateFormat.format(date);        
-        userRepository.save(new User("ym1", "ym@126.com", "ym", "ym123456",formattedDate));
+        userRepository.save(new User("ym", "ym@126.com", "ym", "ym123456",formattedDate));
         //select
         User user=userRepository.findByUserName("ym");
         //delete
@@ -46,20 +45,25 @@ public class UserController {
     }
 
     @RequestMapping("/getUserTestRedisValue")
-    @Cacheable(value = "user-key")
+    /**
+     * 使用value上的信息，来替换类上cacheNames的信息
+     * 未指定 key  Spring使用默认策略生成key（RedisConfig类 重写keyGenerator()方法）
+    * */
+    @Cacheable(value = "user-value" , unless = "#result == null")
     public User getUserTestRedisValue(){
-        User user = new User("ym@126.com", "ym", "ym123456", "ym","123");
+        User user = userRepository.findByUserName("ym");
         System.out.println("调用了方法，没有从Redis中取");
         return user;
     }
 
     @RequestMapping("/getUserTestRedisKey")
     /**
-     * 当 @Cacheable(key = "'list'")时，需在本类添加 @CacheConfig(cacheNames = "user")
+     * 指定key属性，Spring 使用自定义策略生成key  user::user-key
+     * Redis 不支持存入null unless = "#result == null" 存入前判断
      * */
-    @Cacheable(key = "'list'")
+    @Cacheable(value = "user", key = "'user-key'", unless = "#result == null")
     public User getUserTestRedisKey(){
-        User user = new User("ym@126.com", "ym", "ym123456", "ym","123");
+        User user = userRepository.findByUserName("ym");
         System.out.println("调用了方法，没有从Redis中取");
         return user;
     }

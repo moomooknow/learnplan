@@ -33,7 +33,7 @@ public class TestRedis {
         User user=new User("aa@126.com", "aa", "aa123456", "aa","123");
         ValueOperations<String, User> operations=redisTemplate.opsForValue();
         operations.set("com.wfk", user);
-        operations.set("com.wfk.f", user,2, TimeUnit.SECONDS);
+        operations.set("com.wfk.f", user,10, TimeUnit.SECONDS);
         Thread.sleep(1000);
         //redisTemplate.delete("com.neo.f");
         boolean exists=redisTemplate.hasKey("com.wfk.f");
