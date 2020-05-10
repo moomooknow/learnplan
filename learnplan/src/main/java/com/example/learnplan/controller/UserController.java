@@ -3,7 +3,6 @@ package com.example.learnplan.controller;
 import com.example.learnplan.model.User;
 import com.example.learnplan.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
