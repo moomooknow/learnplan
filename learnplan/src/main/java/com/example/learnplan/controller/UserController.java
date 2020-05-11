@@ -4,6 +4,10 @@ import com.example.learnplan.model.User;
 import com.example.learnplan.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -65,6 +69,19 @@ public class UserController {
         User user = userRepository.findByUserName("ym");
         System.out.println("调用了方法，没有从Redis中取");
         return user;
+    }
+    
+    @RequestMapping("/getPage")
+    @Cacheable(value = "user" , unless = "#result == null")
+    public List<User> getPageList(){
+        //JPA 中，page是从0开始，不是从1开始；
+        int page = 0;
+        int size = 10;
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(page,size,sort);
+        Page pages = userRepository.findAll(pageable);
+        System.out.println("调用了方法，没有从Redis中取");
+        return pages.getContent();
     }
 
     @RequestMapping("/uid")
