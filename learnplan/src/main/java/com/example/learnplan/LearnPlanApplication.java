@@ -12,7 +12,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class LearnPlanApplication {
 
     public static void main(String[] args) {
+        System.out.println("The service to start.");
         SpringApplication.run(LearnPlanApplication.class, args);
+        System.out.println("The service has started.");
     }
 
 }
