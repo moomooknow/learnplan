@@ -22,17 +22,13 @@ public class HelloSpringBoot {
     
     @RequestMapping("/hello")
     public String hello(){
-        return "hello spring boot" +
-                " " + 
-                environment.getProperty("com.application.name") + 
-                " " +
-                learnPlanConfig.getDescribe() ;
+        return "hello spring boot";
     }
     
     @RequestMapping("/result")
     public Map<String,Object> getResult(){
         Map<String,Object> result = new HashMap<>(16);
-        result.put("name","ym");
+        result.put("name",environment.getProperty("com.application.name"));
         result.put("describe",learnPlanConfig.getDescribe());
         return result;
     }
