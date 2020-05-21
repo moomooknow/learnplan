@@ -32,6 +32,10 @@ public class User implements Serializable {
     public User() {
         super();
     }
+    public User(String name){
+        super();
+        this.userName = name;
+    }
     public User(String nickName,String email,String userName,  String passWord, String regTime) {
         super();
         this.email = email;
