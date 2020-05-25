@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @author wfk
+ * @author wangfk
  */
 public interface UserRepository extends JpaRepository<User,Long> {
     

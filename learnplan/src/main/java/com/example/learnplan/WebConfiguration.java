@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * @author wfk
+ * @author wangfk
  */
 @Configuration
 public class WebConfiguration {

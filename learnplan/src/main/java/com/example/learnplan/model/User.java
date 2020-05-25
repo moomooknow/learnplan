@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * @author wfk
+ * @author wangfk
  */
 @Entity
 public class User implements Serializable {

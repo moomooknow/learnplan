@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author wfk
+ * @author wangfk
  */
 @RestController
 public class HelloSpringBoot {
