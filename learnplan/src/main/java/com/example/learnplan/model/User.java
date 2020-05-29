@@ -28,6 +28,8 @@ public class User implements Serializable {
     private String nickName;
     @Column(nullable = false)
     private String regTime;
+    @Column(nullable = false)
+    private int age;
     
     public User() {
         super();
@@ -35,6 +37,11 @@ public class User implements Serializable {
     public User(String name){
         super();
         this.userName = name;
+    }
+    public User(String name, int age){
+        super();
+        this.userName = name;
+        this.age = age;
     }
     public User(String nickName,String email,String userName,  String passWord, String regTime) {
         super();
@@ -45,6 +52,11 @@ public class User implements Serializable {
         this.regTime = regTime;
     }
     
+    @Override
+    public String toString() {
+        return "userName= " + userName + ", age= " + age;
+    }
+
     public Long getId() {
         return id;
     }
@@ -91,5 +103,13 @@ public class User implements Serializable {
 
     public void setRegTime(String regTime) {
         this.regTime = regTime;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
