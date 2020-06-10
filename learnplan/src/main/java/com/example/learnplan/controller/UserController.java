@@ -2,6 +2,7 @@ package com.example.learnplan.controller;
 
 import com.example.learnplan.model.User;
 import com.example.learnplan.repository.UserRepository;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -25,7 +27,8 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping("/getUser")
+    @ApiOperation(value = "获取用户", notes = "无参数")
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     public User getUser() {
         //save
         Date date = new Date();
@@ -36,14 +39,12 @@ public class UserController {
         User user=userRepository.findByUserName("ym");
         //delete
         userRepository.delete(user);
-        System.out.println("若下面没出现“无缓存的时候调用”字样且能打印出数据表示测试成功");
         return user;
     }
 
-    @RequestMapping("/getUsers")
+    @RequestMapping(value = "/getUsers", method = RequestMethod.GET)
     public List<User> getUsers() {
         List<User> users=userRepository.findAll();
-        System.out.println("若下面没出现“无缓存的时候调用”字样且能打印出数据表示测试成功");
         return users;
     }
 

@@ -36,7 +36,7 @@ public class OptionalTest {
         Optional.ofNullable(user).ifPresent(p -> System.out.println("姓名： "+p.getUserName()));
         
         //map()方法将对应funcation函数式接口中的对象，进行二次运算，封装成新的对象然后返回在Optional中
-        System.out.println(Optional.ofNullable(user).map(p -> user.getUserName()).orElse("username 为 null"));
+        System.out.println(Optional.ofNullable(user).map(User::getUserName).orElse("username 为 null"));
     }
 
 }

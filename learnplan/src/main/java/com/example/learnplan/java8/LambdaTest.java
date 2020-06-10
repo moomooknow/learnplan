@@ -44,7 +44,7 @@ public class LambdaTest {
         /**
          * 语法格式二：Lambda 需要一个参数，无返回值
          * */
-        Consumer<String > con = (x) -> System.out.println("Lambda 需要一个参数，无返回值");
+        Consumer<String > con = (x) -> System.out.println("Lambda 需要一个参数"+ x +"，无返回值");
         /**
         * 语法格式三：Lambda 只需要一个参数时，参数的小括号可以省略
         * */
@@ -105,7 +105,7 @@ public class LambdaTest {
      * */
     public void supplierTest(){
         List<Integer> numList = getNumList(10, () -> (int)(Math.random()*100));
-        numList.forEach(p -> System.out.println(p));
+        numList.forEach(System.out::println);
     }
     public List<Integer> getNumList(int num, Supplier<Integer> supplier){
         List<Integer> list = new ArrayList();
@@ -136,7 +136,7 @@ public class LambdaTest {
     public void predicateTest(){
         List<String> list = Arrays.asList("ym", "bu", "shi", "la", "ji");
         List<String> listDeal = strList(list, p -> p.length()>1);
-        listDeal.forEach(p -> System.out.println(p));
+        listDeal.forEach(System.out::println);
     }
     public List<String> strList(List<String> list, Predicate<String> predicate){
         List<String> stringList = new ArrayList<>();
@@ -223,7 +223,7 @@ public class LambdaTest {
         userList.stream().filter(p -> p.getAge() > 18).map(p -> {p.setAge(p.getAge()+3);return p;}).forEach(System.out::println);
         //reduce 遍历集合 对某个属性的值进行求和
         //collect 根据条件重新生成集合对象
-        userList.stream().map(User::getAge).collect(Collectors.toList()).stream().reduce((x, y) -> x + y).ifPresent(System.out::println);
+        userList.stream().map(User::getAge).collect(Collectors.toList()).stream().reduce(Integer::sum).ifPresent(System.out::println);
     }
     private List<User> getUserList(){
         List<User> list = new ArrayList<>();
