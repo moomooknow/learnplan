@@ -89,6 +89,13 @@
             <version>3.3.0</version>
         </dependency>
         
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        
         <!--接口API文档 swagger2-->
         <dependency>
             <groupId>io.springfox</groupId>
