@@ -3,8 +3,11 @@ package com.example.learnplan.operation.equals;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * hashSet 去重原理
@@ -31,11 +34,26 @@ public class Student {
         return Objects.hash(name, age);
     }
 }
-class HashSetTest{
+class DeduplicationTest{
     public static void main(String[] args) {
-        HashSet<Student> hashSet = new HashSet<>(16);
-        hashSet.add(new Student("ym", 18));
-        hashSet.add(new Student("ym", 18));
-        hashSet.forEach(System.out::println);
+        List<Student> list = new ArrayList<>();
+        list.add(new Student("ym", 18));
+        list.add(new Student("wlh", 17));
+        list.add(new Student("ym", 18));
+        list.add(new Student("wfk", 19));
+        list.add(new Student("wlh", 17));
+        //1.HashSet去重 重写equals hashCode 方法 无序
+        List<Student> newStudent1 = new ArrayList<>(new HashSet<>(list));
+        newStudent1.forEach(System.out::println);
+        //2.java8 stream
+        list.stream().distinct().collect(Collectors.toList()).forEach(System.out::println);
+        //3.list.contains() 有序
+        List<Student> newStudent2 = new ArrayList<>();
+        for(Student student : list) {
+            if(!newStudent2.contains(student)) {
+                newStudent2.add(student);
+            }
+        }
+        newStudent2.forEach(System.out::println);
     }
 }
