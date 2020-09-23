@@ -48,11 +48,11 @@ public class UserController {
         return users;
     }
 
-    @RequestMapping("/getUserTestRedisValue")
     /**
      * 使用value上的信息，来替换类上cacheNames的信息
      * 未指定 key  Spring使用默认策略生成key（RedisConfig类 重写keyGenerator()方法）
     * */
+    @RequestMapping("/getUserTestRedisValue")
     @Cacheable(value = "user-value" , unless = "#result == null")
     public User getUserTestRedisValue(){
         User user = userRepository.findByUserName("ym");
@@ -60,11 +60,11 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping("/getUserTestRedisKey")
     /**
      * 指定key属性，Spring 使用自定义策略生成key  user::user-key
      * Redis 不支持存入null unless = "#result == null" 存入前判断
      * */
+    @RequestMapping("/getUserTestRedisKey")
     @Cacheable(value = "user", key = "'user-key'", unless = "#result == null")
     public User getUserTestRedisKey(){
         User user = userRepository.findByUserName("ym");
