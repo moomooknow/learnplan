@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,7 +15,7 @@ import java.util.Date;
 @Component
 public class TaskTest02 {
     
-    @Autowired
+    @Resource
     private SchedulerConfig schedulerConfig;
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");

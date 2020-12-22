@@ -1,115 +1,65 @@
 package com.example.learnplan.model;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-/**
- * @author wangfk
- */
+/** @author wangfk */
 @Entity
+@Data
 public class User implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue
-    private Long id;
-    
-    @Column(nullable = false, unique = true)
-    private String userName;
 
-    @Column(nullable = false)
-    private String passWord;
-    @Column(nullable = false, unique = true)
-    private String email;
-    @Column(nullable = true, unique = true)
-    private String nickName;
-    @Column(nullable = false)
-    private String regTime;
-    @Column(nullable = false)
-    private int age;
-    
-    public User() {
-        super();
-    }
-    public User(String name){
-        super();
-        this.userName = name;
-    }
-    public User(String name, int age){
-        super();
-        this.userName = name;
-        this.age = age;
-    }
-    public User(String nickName,String email,String userName,  String passWord, String regTime) {
-        super();
-        this.email = email;
-        this.nickName = nickName;
-        this.passWord = passWord;
-        this.userName = userName;
-        this.regTime = regTime;
-    }
-    
-    @Override
-    public String toString() {
-        return "userName= " + userName + ", age= " + age;
-    }
+  private static final long serialVersionUID = 1L;
+  @Id @GeneratedValue private Long id;
 
-    public Long getId() {
-        return id;
-    }
+  @Column(nullable = false, unique = true)
+  private String userName;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  @Column(nullable = false)
+  private String passWord;
 
-    public String getUserName() {
-        return userName;
-    }
+  @Column(nullable = false, unique = true)
+  private String email;
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+  @Column(unique = true)
+  private String nickName;
 
-    public String getPassWord() {
-        return passWord;
-    }
+  @Column(nullable = false)
+  private String regTime;
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
-    }
+  @Column(nullable = false)
+  private int age;
 
-    public String getEmail() {
-        return email;
-    }
+  public User() {
+    super();
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public User(String name) {
+    super();
+    this.userName = name;
+  }
 
-    public String getNickName() {
-        return nickName;
-    }
+  public User(String name, int age) {
+    super();
+    this.userName = name;
+    this.age = age;
+  }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
+  public User(String nickName, String email, String userName, String passWord, String regTime) {
+    super();
+    this.email = email;
+    this.nickName = nickName;
+    this.passWord = passWord;
+    this.userName = userName;
+    this.regTime = regTime;
+  }
 
-    public String getRegTime() {
-        return regTime;
-    }
-
-    public void setRegTime(String regTime) {
-        this.regTime = regTime;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
+  @Override
+  public String toString() {
+    return "userName= " + userName + ", age= " + age;
+  }
 }

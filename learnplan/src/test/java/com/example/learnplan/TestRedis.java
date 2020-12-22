@@ -23,7 +23,7 @@ public class TestRedis {
     private RedisTemplate redisTemplate;
 
     @Test
-    public void test() throws Exception {
+    public void test() {
         stringRedisTemplate.opsForValue().set("aaa", "111");
         Assert.assertEquals("111", stringRedisTemplate.opsForValue().get("aaa"));
     }

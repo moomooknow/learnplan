@@ -5,13 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+
 /**
  * @author wangfk
  */
 @Component
 public class TaskTest01 {
     
-    @Autowired
+    @Resource
     private SchedulerConfig schedulerConfig;
     private int count=0;
 

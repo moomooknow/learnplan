@@ -3,37 +3,35 @@ package com.example.learnplan.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-/**
- * @author wangfk
- */
+/** @author wangfk */
 @Component
 @ConfigurationProperties(prefix = "com.application")
 public class LearnPlanConfig {
-    private String sex;
-    private String name;
-    private String describe;
+  private String sex;
+  private String name;
+  private String describe;
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public String getDescribe() {
-        return describe;
-    }
+  public String getDescribe() {
+    return describe;
+  }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
-    }
+  public void setDescribe(String describe) {
+    this.describe = describe;
+  }
 
-    public String getSex() {
-        return sex;
-    }
+  public String getSex() {
+    return sex;
+  }
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
+  public void setSex(String sex) {
+    this.sex = sex;
+  }
 }
