@@ -61,6 +61,7 @@ public class LambdaTest {
     lambdaTest.supplierTest();
     lambdaTest.functionTest();
     lambdaTest.predicateTest();
+    lambdaTest.functionInterfaceTest();
     lambdaTest.methodReferenceTest();
     lambdaTest.classStaticReferenceTest();
     lambdaTest.classReferenceTest();
@@ -90,7 +91,7 @@ public class LambdaTest {
   }
 
   public List<Integer> getNumList(int num, Supplier<Integer> supplier) {
-    List<Integer> list = new ArrayList();
+    List<Integer> list = new ArrayList<>();
     for (int i = 0; i < num; i++) {
       Integer n = supplier.get();
       list.add(n);
@@ -121,6 +122,16 @@ public class LambdaTest {
     List<String> stringList = new ArrayList<>();
     list.stream().filter(p -> predicate.test(p)).forEach(p -> stringList.add(p));
     return stringList;
+  }
+
+  /** 自定义函数式接口 */
+  public void functionInterfaceTest() {
+    customFunction(1, 2, (a, b) -> System.out.println(a + b));
+  }
+
+  public void customFunction(int a, int b, TestFunctionInterface testFunctionInterface) {
+    TestFunctionInterface.staticMethod();
+    testFunctionInterface.abstractMethod(a, b);
   }
 
   /**
