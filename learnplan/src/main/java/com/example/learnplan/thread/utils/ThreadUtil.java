@@ -27,8 +27,4 @@ public class ThreadUtil {
           new LinkedBlockingQueue<>(1024),
           NAMED_THREAD_FACTORY,
           new ThreadPoolExecutor.AbortPolicy());
-
-  public static void main(String[] args) {
-    ThreadUtil.executor.execute(() -> System.out.println("单起线程"));
-  }
 }
